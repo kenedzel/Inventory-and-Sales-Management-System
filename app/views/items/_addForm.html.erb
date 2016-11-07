@@ -1,0 +1,73 @@
+<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">New Item</h4>
+        </div>
+        <%= form_for(item) do |f| %>
+          <div class="modal-body">
+            <div class="item-form">
+              <% if item.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
+                  <ul>
+                  <% item.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                  </ul>
+                </div>
+              <% end %>
+              <!-- <div class="col-md-6"> -->
+                <div class="field">
+                  <%= f.label :name %>
+                  <%= f.text_field :name, :class => "form-control" %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :code %>
+                  <%= f.text_field :code, :class => "form-control" %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :category_id %>
+                  <!-- <%= f.number_field :category_id %> -->
+                  <%= f.select(:category_id, options_for_select([['Normal','1'], ['Needs Replenishment','2'], ['Out of Stock','3']]), {}, {class: "form-control"}) %>
+                </div>
+              <!-- </div> -->
+              <!-- <div class="col-md-6"> -->
+                <div class="field">
+                  <%= f.label :retail_price %>
+                  <%= f.number_field :retail_price, :class => "form-control" %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :cost_price %>
+                  <%= f.number_field :cost_price, :class => "form-control" %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :stock %>
+                  <%= f.number_field :stock, :class => "form-control" %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :status %>
+                  <%= f.select(:status, options_for_select([['Normal','1'], ['Needs Replenishment','2'], ['Out of Stock','3']]), {}, {class: "form-control"}) %>
+                </div>
+              <!-- </div> -->
+            </div>
+            <div class="modal-footer">
+              <div class="actions">
+                <button type="button" class="btn btn-danger btn-outline" data-dismiss="modal">Close</button>
+                <%= f.submit "Add Item", :class => "btn btn-success btn-outline to-left" %>
+              </div>
+            </div>
+          </div>
+      </div>
+        <% end %>
+    </div>
+  </div>

@@ -1,0 +1,61 @@
+.nav-position {
+  position: inherit;
+}
+
+.container-width {
+  width: 500px;
+}
+
+.table-positioning {
+  width: 65%;
+  max-width: 100%;
+  margin-bottom: 20px;
+  margin-left: 17%;
+}
+
+.item-form {
+  width: 74%;
+  margin: 4% 12%;
+}
+
+.items-padding {
+  margin-left: 17%;
+}
+
+.to-left {
+  float: left;
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: inherit;
+    transition: all .5s;
+}
+
+.btn-primary.btn-outline {
+    color: #428bca;
+}
+
+.btn-success.btn-outline {
+    color: #5cb85c;
+}
+
+.btn-info.btn-outline {
+    color: #5bc0de;
+}
+
+.btn-warning.btn-outline {
+    color: #f0ad4e;
+}
+
+.btn-danger.btn-outline {
+    color: #d9534f;
+}
+
+.btn-primary.btn-outline:hover,
+.btn-success.btn-outline:hover,
+.btn-info.btn-outline:hover,
+.btn-warning.btn-outline:hover,
+.btn-danger.btn-outline:hover {
+    color: #fff;
+}
