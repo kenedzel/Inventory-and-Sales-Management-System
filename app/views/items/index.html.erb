@@ -1,39 +1,51 @@
-<%= render "addForm", item: @item %>
-<p id="notice"><%= notice %></p>
-
-<h1 class="items-padding">Items</h1>
-<!-- <%= link_to 'New Item', new_item_path, :class => "items-padding btn btn-sm btn-default" %> -->
-<button type="button" class="items-padding btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">Add item</button>
-<table class="table table-positioning">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Code</th>
-      <th>Category</th>
-      <th>Retail price</th>
-      <th>Cost price</th>
-      <th>Stock</th>
-      <th>Status</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= item.name %></td>
-        <td><%= item.code %></td>
-        <td><%= item.category_id %></td>
-        <td><%= item.retail_price %></td>
-        <td><%= item.cost_price %></td>
-        <td><%= item.stock %></td>
-        <td><%= item.status %></td>
-        <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<%= render "addItem", item: @item %>
+  <div align="center">
+    <% if notice.present? %>
+      <div class="alert alert-info alert-dismissable alert-size" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= notice %>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+  <div class="title-padding">
+    <h1>Items</h1>
+    <p>Items listing</p>
+  </div>
+  <div class="data-table">
+  <!-- <%= link_to 'New Item', new_item_path, :class => "items-padding btn btn-sm btn-default" %> -->
+    <div class="padding-btn">
+      <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">Add item</button>
+    </div>
+    <table class="table table-positioning">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Code</th>
+          <th>Category</th>
+          <th>Retail price</th>
+          <th>Cost price</th>
+          <th>Stock</th>
+          <th>Status</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
+      <tbody>
+        <% @items.each do |item| %>
+          <tr>
+            <td><%= item.name %></td>
+            <td><%= item.code %></td>
+            <td><%= item.category_id %></td>
+            <td><%= item.retail_price %></td>
+            <td><%= item.cost_price %></td>
+            <td><%= item.stock %></td>
+            <td><%= item.status %></td>
+            <td><%= link_to 'View', item %></td>
+            <td><%= link_to 'Edit', edit_item_path(item) %></td>
+            <td><%= link_to 'Delete', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
 <br>

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  resources :statuses
+  resources :categories
   resources :items
-  root :to => 'welcome#index'
+  root :to => 'items#index'
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }

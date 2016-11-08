@@ -1,11 +1,14 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /items
   # GET /items.json
   def index
     @items = Item.all
     @item = Item.new
+    @categories = Category.get_all_categories
+    # @item_search = Item.find(params[:id])
   end
 
   # GET /items/1
@@ -29,8 +32,8 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
-        format.json { render :show, status: :created, location: @item }
+        format.html { redirect_to items_path, notice: 'Item was successfully created.' }
+        format.json { render :index, status: :created, location: @item }
       else
         format.html { render :new }
         format.json { render json: @item.errors, status: :unprocessable_entity }

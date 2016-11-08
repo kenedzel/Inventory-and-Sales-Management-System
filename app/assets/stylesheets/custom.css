@@ -1,3 +1,19 @@
+.side-margin{
+  margin-left: 7%;
+  margin-top: 2%;
+}
+.data-table {
+  margin-top: 11%;
+  margin-left: 8%;
+}
+
+.update-form-title{
+  margin-left: 40%;
+}
+
+.update-fields {
+  margin-top: 15%;
+}
 .nav-position {
   position: inherit;
 }
@@ -13,19 +29,49 @@
   margin-left: 17%;
 }
 
-.item-form {
+.single-table {
+  width: 0%; !important
+  max-width: 100%;
+  margin-bottom: 20px
+}
+
+.single-padding-btn {
+  padding-left: 58%;
+}
+
+.table-margin-left {
+  margin-left: 38%;
+}
+.add-form {
   width: 74%;
   margin: 4% 12%;
 }
 
-.items-padding {
-  margin-left: 17%;
+.edit-form {
+  width: 40%;
+  margin: 4% 0%;
 }
 
+.title-padding {
+  margin-left: 24%;
+}
+
+.padding-btn {
+  padding-left: 76%;
+}
 .to-left {
   float: left;
 }
 
+.login-positioning {
+  padding-top: 11%;
+  margin-left: 1%;
+}
+
+.alert-size {
+  width: 19%;
+  padding-left: 2%;
+}
 .btn-outline {
     background-color: transparent;
     color: inherit;
@@ -58,4 +104,81 @@
 .btn-warning.btn-outline:hover,
 .btn-danger.btn-outline:hover {
     color: #fff;
+}
+
+#sidebar {
+  font-size: 14px;
+}
+#sidebar a {
+  color: #5d676f;
+  letter-spacing: 0.3px;
+  font-size: 13px;
+}
+#sidebar a i {
+  position: relative;
+  top: 4px;
+  font-size: 16px;
+  margin-right: 4px;
+  width: 17px;
+  display: inline-block;
+}
+#sidebar ul {
+  margin: 0;
+  padding: 0;
+  padding-left: 2px;
+  color: #5d676f;
+}
+#sidebar ul li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  margin-bottom: 14px;
+}
+#sidebar ul li:active a {
+  color: #3b0377;
+  font-weight: bold;
+}
+#sidebar ul li:hover a {
+  color: #3b0377;
+}
+#sidebar ul li:focus a {
+  color: #3b0377;
+  font-weight: bold;
+}
+#sidebar ul li a {
+  text-decoration: none;
+  outline: none;
+}
+#sidebar ul .an-arrow-right-thin {
+  font-size: 11px;
+  opacity: 0.5;
+  position: relative;
+  left: 3px;
+  top: 1px;
+}
+#sidebar ul.submenu-list {
+  margin-left: 20px;
+  margin-top: -5px;
+  margin-bottom: 10px;
+}
+#sidebar ul.submenu-list li {
+  margin-bottom: 4px;
+}
+#sidebar ul.with-divider li.divider {
+  height: 1px;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+#sidebar .sidebar-fixed {
+  position: fixed;
+}
+
+.open > a {
+  outline: 0;
+}
+
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {
+    text-decoration: none;
+    color: #fff;
+    background-color: #3b0377;
 }

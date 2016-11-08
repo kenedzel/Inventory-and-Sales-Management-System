@@ -10,43 +10,45 @@
       </ul>
     </div>
   <% end %>
+  <div class="edit-form">
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name, :class => "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
+    <div class="field">
+      <%= f.label :code %>
+      <%= f.text_field :code, :class => "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :code %>
-    <%= f.text_field :code %>
-  </div>
+    <div class="field">
+      <%= f.label :category_id %>
+      <%= f.select(:category_id, options_for_select([['Active','1'], ['Needs Replenishment','2'], ['Out of Stock','3']]), {}, {class: "form-control"}) %>
+    </div>
 
-  <div class="field">
-    <%= f.label :category_id %>
-    <%= f.number_field :category_id %>
-  </div>
+    <div class="field">
+      <%= f.label :retail_price %>
+      <%= f.number_field :retail_price, :class => "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :retail_price %>
-    <%= f.number_field :retail_price %>
-  </div>
+    <div class="field">
+      <%= f.label :cost_price %>
+      <%= f.number_field :cost_price, :class => "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :cost_price %>
-    <%= f.number_field :cost_price %>
-  </div>
+    <div class="field">
+      <%= f.label :stock %>
+      <%= f.number_field :stock, :class => "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :stock %>
-    <%= f.number_field :stock %>
+    <div class="field">
+      <%= f.label :status %>
+      <%= f.select(:category_id, options_for_select([['Active','1'], ['Needs Replenishment','2'], ['Out of Stock','3']]), {}, {class: "form-control"}) %>
+    </div>
+    <br>
+    <div class="actions">
+      <%= f.submit "Update Item", :class => "btn btn-success btn-outline to-left" %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :status %>
-    <%= f.number_field :status %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <br><br>
 <% end %>

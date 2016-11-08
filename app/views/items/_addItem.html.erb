@@ -10,7 +10,7 @@
         </div>
         <%= form_for(item) do |f| %>
           <div class="modal-body">
-            <div class="item-form">
+            <div class="add-form">
               <% if item.errors.any? %>
                 <div id="error_explanation">
                   <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
@@ -35,7 +35,8 @@
                 <div class="field">
                   <%= f.label :category_id %>
                   <!-- <%= f.number_field :category_id %> -->
-                  <%= f.select(:category_id, options_for_select([['Normal','1'], ['Needs Replenishment','2'], ['Out of Stock','3']]), {}, {class: "form-control"}) %>
+                  <%=f.select(:category_id, options_from_collection_for_select(@categories,:id,:name), {} ,{class: "form-control"}) %>
+                  <!-- <%= f.select(:category_id, options_for_select([['Normal','1'], ['Needs Replenishment','2'], ['Out of Stock','3']]), {}, {class: "form-control"}) %> -->
                 </div>
               <!-- </div> -->
               <!-- <div class="col-md-6"> -->
