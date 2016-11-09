@@ -20,3 +20,7 @@ ActiveRecord::Base.connection.execute("ALTER SEQUENCE statuses_id_seq RESTART WI
 Status.create(:name => "Active")
 Status.create(:name => "Needs Replenishment")
 Status.create(:name => "Out of Stock")
+
+User.delete_all
+ActiveRecord::Base.connection.execute("ALTER SEQUENCE users_id_seq RESTART WITH 1;")
+User.create(:email => "inventory@admin.com", :password => "admin")

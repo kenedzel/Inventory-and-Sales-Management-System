@@ -24,9 +24,11 @@
         </ul>
       </div><!-- /.navbar-collapse -->
       <% else %>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to('Log in', new_user_session_path, :class => "fa fa-sign-in") %></li>
         </ul>
+      </div>
     <% end %>
   </div><!-- /.container-fluid -->
 </nav>
