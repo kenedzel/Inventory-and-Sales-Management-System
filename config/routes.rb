@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :units
   resources :statuses
   resources :categories
   resources :items

@@ -11,9 +11,14 @@
   margin-left: 40%;
 }
 
-.update-fields {
-  margin-top: 15%;
+.paginate-margin {
+  margin-left: 43%;
 }
+
+.update-fields {
+  margin-top: 12%;
+}
+
 .nav-position {
   position: inherit;
 }
@@ -23,7 +28,7 @@
 }
 
 .table-positioning {
-  width: 65%;
+  width: 75%;
   max-width: 100%;
   margin-bottom: 20px;
   margin-left: 17%;
@@ -35,16 +40,41 @@
   margin-bottom: 20px
 }
 
+.btn-xs {
+  width: 100%; !important
+  height: 61%; !important
+  align-content: center; !important
+}
+
+.cursor-default {
+  cursor: default;
+}
+th, td {
+  text-align: center;!important
+}
+
 .single-padding-btn {
-  padding-left: 58%;
+  padding-left: 51%;
+}
+
+.margin-left-unit {
+  margin-left: 43%;
 }
 
 .table-margin-left {
-  margin-left: 38%;
+  margin-left: 27%;
 }
 .add-form {
   width: 74%;
   margin: 4% 12%;
+}
+
+.out-of-stock {
+  color: red;
+}
+
+.back-btn {
+  margin-left: 45%;
 }
 
 .edit-form {
@@ -57,7 +87,7 @@
 }
 
 .padding-btn {
-  padding-left: 76%;
+  padding-left: 86%;
 }
 .to-left {
   float: left;

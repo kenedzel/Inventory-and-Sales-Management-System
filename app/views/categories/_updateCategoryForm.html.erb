@@ -10,13 +10,15 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
+  <div class="edit-form">
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name, :class => "form-control" %>
+    </div>
+    <br>
+    <div class="actions">
+      <%= f.submit "Update Item", :class => "btn btn-success btn-outline to-left" %>
+      <a class="btn btn-danger btn-outline back-btn" href="/">Back</a>
+    </div>
   </div>
 <% end %>

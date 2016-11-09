@@ -1,4 +1,4 @@
-<%= render "addItem", item: @item %>
+<%= render "addItemForm", item: @item %>
   <div align="center">
     <% if notice.present? %>
       <div class="alert alert-info alert-dismissable alert-size" role="alert">
@@ -9,7 +9,7 @@
   </div>
   <div class="title-padding">
     <h1>Items</h1>
-    <p>Items listing</p>
+    <p>Items that are listed in the table are saved in the inventory.</p>
   </div>
   <div class="data-table">
   <!-- <%= link_to 'New Item', new_item_path, :class => "items-padding btn btn-sm btn-default" %> -->
@@ -25,6 +25,7 @@
           <th>Retail price</th>
           <th>Cost price</th>
           <th>Stock</th>
+          <th>Unit</th>
           <th>Status</th>
           <th colspan="3"></th>
         </tr>
@@ -35,11 +36,18 @@
           <tr>
             <td><%= item.name %></td>
             <td><%= item.code %></td>
-            <td><%= item.category_id %></td>
-            <td><%= item.retail_price %></td>
-            <td><%= item.cost_price %></td>
+            <td><%= item.category.name %></td>
+            <td>₱ <%= item.retail_price %></td>
+            <td>₱ <%= item.cost_price %></td>
             <td><%= item.stock %></td>
-            <td><%= item.status %></td>
+            <td><%= item.unit.name %></td>
+          <% if item.status.name == "Active" %>
+            <td><a class="btn btn-success btn-xs cursor-default"><%= item.status.name %></a></td>
+          <% elsif item.status.name == "Needs Replenishment" %>
+            <td><a class="btn btn-warning btn-xs cursor-default"><%= item.status.name %></a></td>
+          <% elsif item.status.name == "Out of Stock" %>
+            <td><a class="btn btn-danger btn-xs cursor-default"><%= item.status.name %></a></td>
+          <% end %>
             <td><%= link_to 'View', item %></td>
             <td><%= link_to 'Edit', edit_item_path(item) %></td>
             <td><%= link_to 'Delete', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>

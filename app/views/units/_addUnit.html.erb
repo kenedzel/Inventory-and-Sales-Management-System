@@ -6,17 +6,17 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">New Status</h4>
+          <h4 class="modal-title">New Unit</h4>
         </div>
-        <%= form_for(status) do |f| %>
+        <%= form_for(unit) do |f| %>
           <div class="modal-body">
             <div class="add-form">
-              <% if status.errors.any? %>
+              <% if unit.errors.any? %>
                 <div id="error_explanation">
-                  <h2><%= pluralize(status.errors.count, "error") %> prohibited this status from being saved:</h2>
+                  <h2><%= pluralize(unit.errors.count, "error") %> prohibited this unit from being saved:</h2>
 
                   <ul>
-                  <% status.errors.full_messages.each do |message| %>
+                  <% unit.errors.full_messages.each do |message| %>
                     <li><%= message %></li>
                   <% end %>
                   </ul>
@@ -25,13 +25,13 @@
 
               <div class="field">
                 <%= f.label :name %>
-                <%= f.text_field :name, :class => "form-control" %>
+                <%= f.text_field :name, :class =>"form-control" %>
               </div>
             </div>
             <div class="modal-footer">
               <div class="actions">
                 <button type="button" class="btn btn-danger btn-outline" data-dismiss="modal">Close</button>
-                <%= f.submit "Add Status", :class => "btn btn-success btn-outline to-left" %>
+                <%= f.submit "Add Unit", :class => "btn btn-success btn-outline to-left" %>
               </div>
             </div>
           </div>

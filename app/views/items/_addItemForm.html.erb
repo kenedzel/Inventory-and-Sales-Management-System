@@ -52,12 +52,17 @@
 
                 <div class="field">
                   <%= f.label :stock %>
-                  <%= f.number_field :stock, :class => "form-control" %>
+                  <%= f.number_field :stock, :class => "form-control", :min => 0 %>
                 </div>
 
                 <div class="field">
-                  <%= f.label :status %>
-                  <%= f.select(:status, options_for_select([['Normal','1'], ['Needs Replenishment','2'], ['Out of Stock','3']]), {}, {class: "form-control"}) %>
+                  <%= f.label :unit_id %>
+                  <%= f.select(:unit_id, options_from_collection_for_select(@units,:id,:name), {}, {class: "form-control"}) %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :status_id %>
+                  <%= f.select(:status_id, options_from_collection_for_select(@statuses,:id,:name), {}, {class: "form-control"}) %>
                 </div>
               <!-- </div> -->
             </div>

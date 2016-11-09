@@ -23,7 +23,8 @@
 
     <div class="field">
       <%= f.label :category_id %>
-      <%= f.select(:category_id, options_for_select([['Active','1'], ['Needs Replenishment','2'], ['Out of Stock','3']]), {}, {class: "form-control"}) %>
+      <!-- <%=f.select(:category_id, options_from_collection_for_select(@categories,:id,:name), {} ,{class: "form-control"}) %> -->
+      <%= f.select(:category_id, options_from_collection_for_select(@categories,:id,:name, f.object.category_id), {include_blank: '-- Select Category --'}, {:id=>"category_id", :class =>"form-control", :disabled=>false}) %>
     </div>
 
     <div class="field">
@@ -42,12 +43,18 @@
     </div>
 
     <div class="field">
-      <%= f.label :status %>
-      <%= f.select(:category_id, options_for_select([['Active','1'], ['Needs Replenishment','2'], ['Out of Stock','3']]), {}, {class: "form-control"}) %>
+      <%= f.label :unit_id %>
+      <%= f.select(:unit_id, options_from_collection_for_select(@units,:id,:name, f.object.unit_id), {include_blank: '-- Select Unit --'}, {:id=>"unit_id", :class =>"form-control", :disabled=>false})%>
+    </div>
+
+    <div class="field">
+      <%= f.label :status_id %>
+      <%= f.select(:status_id, options_from_collection_for_select(@statuses,:id,:name, f.object.status_id), {include_blank: '-- Select Status --'}, {:id=>"status_id", :class => "form-control", :disabled=>false}) %>
     </div>
     <br>
     <div class="actions">
       <%= f.submit "Update Item", :class => "btn btn-success btn-outline to-left" %>
+      <a class="btn btn-danger btn-outline back-btn" href="/">Back</a>
     </div>
   </div>
   <br><br>

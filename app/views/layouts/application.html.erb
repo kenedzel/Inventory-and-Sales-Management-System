@@ -9,9 +9,10 @@
   </head>
 
   <body>
-    <%= render "partials/nav" %>
-    <%= render "partials/sidebar" %>
-
+      <%= render "partials/nav" %>
+    <% if user_signed_in? %>
+      <%= render "partials/sidebar" %>
+    <% end %>
       <%= yield %>
   </body>
 </html>

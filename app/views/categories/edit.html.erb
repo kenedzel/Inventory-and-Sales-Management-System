@@ -1,6 +1,9 @@
-<h1>Editing Category</h1>
-
-<%= render 'form', category: @category %>
-
-<%= link_to 'Show', @category %> |
-<%= link_to 'Back', categories_path %>
+<div class="update-form-title">
+  <h3>Update Category</h3>
+  <p>You can update the category here.</p>
+  <div class="update-fields">
+    <%= render 'updateCategoryForm', category: @category %>
+  </div>
+</div>
+<!-- <%= link_to 'Show', @category %> |
+<%= link_to 'Back', categories_path %> -->
