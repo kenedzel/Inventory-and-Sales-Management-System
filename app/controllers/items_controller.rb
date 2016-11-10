@@ -37,12 +37,29 @@ class ItemsController < ApplicationController
     @categories = Category.get_all_categories
     @statuses = Status.get_all_statuses
     @units = Unit.get_all_units
+
+    name = @item.name.to_i(2)
+
+    #improve item code generation
+
+    @item.code = "I_00" + name.to_s(2)
+
+    if @item.stock < @item.critical_quantity_basis && @item.stock <= 0
+      flash[:notice] = "Stocks must be greater than critical quantity basis"
+    elsif @item.stock > @item.critical_quantity_basis
+      @item.status_id = 1
+    elsif @item.stock > 0 || @item.stock < @item.critical_quantity_basis
+      @item.status_id = 2
+    elsif @item.stock == 0
+      @item.status_id = 3
+    end
+
     respond_to do |format|
       if @item.save
         format.html { redirect_to items_path, notice: 'Item was successfully created.' }
         format.json { render :index, status: :created, location: @item }
       else
-        format.html { render :new }
+        format.html { redirect_to items_path }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
@@ -80,6 +97,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :code, :category_id, :retail_price, :cost_price, :stock, :status_id, :unit_id)
+      params.require(:item).permit(:name, :code, :category_id, :retail_price, :cost_price, :stock, :status_id, :unit_id, :critical_quantity_basis)
     end
 end

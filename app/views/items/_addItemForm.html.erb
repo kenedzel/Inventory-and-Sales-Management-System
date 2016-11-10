@@ -10,62 +10,62 @@
         </div>
         <%= form_for(item) do |f| %>
           <div class="modal-body">
-            <div class="add-form">
-              <% if item.errors.any? %>
-                <div id="error_explanation">
-                  <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
-                  <ul>
-                  <% item.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
+            <div class="container-fluid">
+              <div class="row">
+                <div class="add-form">
+                  <% if item.errors.any? %>
+                    <div id="error_explanation">
+                      <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
+                      <ul>
+                      <% item.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                      <% end %>
+                      </ul>
+                    </div>
                   <% end %>
-                  </ul>
-                </div>
-              <% end %>
-              <!-- <div class="col-md-6"> -->
-                <div class="field">
-                  <%= f.label :name %>
-                  <%= f.text_field :name, :class => "form-control" %>
-                </div>
+                  <div class="col-md-6">
+                    <div class="field">
+                      <%= f.label :name %>
+                      <%= f.text_field :name, :class => "form-control" %>
+                    </div>
 
-                <div class="field">
-                  <%= f.label :code %>
-                  <%= f.text_field :code, :class => "form-control" %>
-                </div>
+                    <div class="field">
+                      <%= f.label :code %>
+                      <%= f.text_field :code, :class => "form-control", :disabled => "true", :value => "To be generated" %>
+                    </div>
 
-                <div class="field">
-                  <%= f.label :category_id %>
-                  <!-- <%= f.number_field :category_id %> -->
-                  <%=f.select(:category_id, options_from_collection_for_select(@categories,:id,:name), {} ,{class: "form-control"}) %>
-                  <!-- <%= f.select(:category_id, options_for_select([['Normal','1'], ['Needs Replenishment','2'], ['Out of Stock','3']]), {}, {class: "form-control"}) %> -->
-                </div>
-              <!-- </div> -->
-              <!-- <div class="col-md-6"> -->
-                <div class="field">
-                  <%= f.label :retail_price %>
-                  <%= f.number_field :retail_price, :class => "form-control" %>
-                </div>
+                    <div class="field">
+                      <%= f.label :category_id %>
+                      <%=f.select(:category_id, options_from_collection_for_select(@categories,:id,:name), {} ,{class: "form-control"}) %>
+                    </div>
 
-                <div class="field">
-                  <%= f.label :cost_price %>
-                  <%= f.number_field :cost_price, :class => "form-control" %>
+                    <div class="field">
+                      <%= f.label :retail_price %>
+                      <%= f.number_field :retail_price, :class => "form-control", :min => 1 %>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="field">
+                      <%= f.label :cost_price %>
+                      <%= f.number_field :cost_price, :class => "form-control", :min => 1 %>
+                    </div>
+                    <div class="field">
+                      <%= f.label :stock %>
+                      <%= f.number_field :stock, :class => "form-control", :min => 0 %>
+                    </div>
+                    <div class="field">
+                      <%= f.label :unit_id %>
+                      <%= f.select(:unit_id, options_from_collection_for_select(@units,:id,:name), {}, {class: "form-control"}) %>
+                    </div>
+                    <div class="field">
+                      <%= f.label :critical_quantity_basis %>
+                      <%= f.number_field :critical_quantity_basis, :class => "form-control", :min => 1 %>
+                    </div>
+                  </div>
                 </div>
-
-                <div class="field">
-                  <%= f.label :stock %>
-                  <%= f.number_field :stock, :class => "form-control", :min => 0 %>
-                </div>
-
-                <div class="field">
-                  <%= f.label :unit_id %>
-                  <%= f.select(:unit_id, options_from_collection_for_select(@units,:id,:name), {}, {class: "form-control"}) %>
-                </div>
-
-                <div class="field">
-                  <%= f.label :status_id %>
-                  <%= f.select(:status_id, options_from_collection_for_select(@statuses,:id,:name), {}, {class: "form-control"}) %>
-                </div>
-              <!-- </div> -->
+              </div>
             </div>
+            <br>
             <div class="modal-footer">
               <div class="actions">
                 <button type="button" class="btn btn-danger btn-outline" data-dismiss="modal">Close</button>

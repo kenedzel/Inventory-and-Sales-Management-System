@@ -11,11 +11,19 @@
   margin-left: 40%;
 }
 
+.view-form-title{
+  margin-left: 40%;
+}
+
 .paginate-margin {
   margin-left: 43%;
 }
 
 .update-fields {
+  margin-top: 12%;
+}
+
+.view-fields {
   margin-top: 12%;
 }
 
@@ -77,7 +85,16 @@ th, td {
   margin-left: 45%;
 }
 
+.back-btn-view {
+  margin: 0% 20%;
+}
+
 .edit-form {
+  width: 40%;
+  margin: 4% 0%;
+}
+
+.view-form {
   width: 40%;
   margin: 4% 0%;
 }

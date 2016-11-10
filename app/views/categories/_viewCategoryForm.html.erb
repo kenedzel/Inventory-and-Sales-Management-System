@@ -1,0 +1,10 @@
+  <div class="view-form">
+    <div class="field">
+      <strong>Name: </strong>
+      <input class="form-control" value="<%= @category.name %>" disabled>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn btn-success btn-outline to-left" href="/categories/"+ <%= @category.id %> +"/edit">Edit</a>
+    <a class="btn btn-danger btn-outline back-btn-view" href="/">Back</a>
+  </div>

@@ -9,4 +9,9 @@ class Item < ApplicationRecord
     select("id,name")
       .order("name")
   }
+
+  scope :get_item, ->(id) {
+    select("id, name, code, category_id, retail_price, cost_price, stock, status_id, unit_id")
+    .from("items where id =" + id )
+  }
 end
