@@ -54,10 +54,6 @@
                       <%= f.number_field :stock, :class => "form-control", :min => 0 %>
                     </div>
                     <div class="field">
-                      <%= f.label :unit_id %>
-                      <%= f.select(:unit_id, options_from_collection_for_select(@units,:id,:name), {}, {class: "form-control"}) %>
-                    </div>
-                    <div class="field">
                       <%= f.label :critical_quantity_basis %>
                       <%= f.number_field :critical_quantity_basis, :class => "form-control", :min => 1 %>
                     </div>

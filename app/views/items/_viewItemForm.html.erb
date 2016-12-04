@@ -28,7 +28,12 @@
 
     <div class="field">
       <strong>Stock:</strong>
-      <input class="form-control" value="<%= @item.stock %> <%= @item.unit.name %>" disabled>
+      <input class="form-control" value="<%= @item.stock %>" disabled>
+    </div>
+
+    <div class="field">
+      <strong>Critical Quantity Basis:</strong>
+      <input class="form-control" value="<%= @item.critical_quantity_basis %>" disabled>
     </div>
 
     <div class="field">

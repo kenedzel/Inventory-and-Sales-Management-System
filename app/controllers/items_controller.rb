@@ -9,7 +9,6 @@ class ItemsController < ApplicationController
     @item = Item.new
     @categories = Category.get_all_categories
     @statuses = Status.get_all_statuses
-    @units = Unit.get_all_units
     # @item_search = Item.find(params[:id])
   end
 
@@ -25,7 +24,6 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
-    @units = Unit.get_all_units
     @categories = Category.get_all_categories
     @statuses = Status.get_all_statuses
   end
@@ -36,7 +34,6 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @categories = Category.get_all_categories
     @statuses = Status.get_all_statuses
-    @units = Unit.get_all_units
 
     name = @item.name.to_i(2)
 
@@ -97,6 +94,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :code, :category_id, :retail_price, :cost_price, :stock, :status_id, :unit_id, :critical_quantity_basis)
+      params.require(:item).permit(:name, :code, :category_id, :retail_price, :cost_price, :stock, :status_id, :critical_quantity_basis)
     end
 end

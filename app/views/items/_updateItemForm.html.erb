@@ -43,10 +43,9 @@
     </div>
 
     <div class="field">
-      <%= f.label :unit_id %>
-      <%= f.select(:unit_id, options_from_collection_for_select(@units,:id,:name, f.object.unit_id), {include_blank: '-- Select Unit --'}, {:id=>"unit_id", :class =>"form-control", :disabled=>false})%>
+      <%= f.label :critical_quantity_basis %>
+      <%= f.number_field :critical_quantity_basis, :class => "form-control" %>
     </div>
-
     <br>
     <div class="actions">
       <%= f.submit "Update Item", :class => "btn btn-success btn-outline to-left" %>
