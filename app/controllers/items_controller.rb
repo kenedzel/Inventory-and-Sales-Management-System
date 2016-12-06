@@ -42,7 +42,7 @@ class ItemsController < ApplicationController
     @item.code = "I_00" + name.to_s(2)
 
     if @item.stock < @item.critical_quantity_basis && @item.stock <= 0
-      flash[:notice] = "Stocks must be greater than critical quantity basis"
+      flash[:notice] = "Stocks must be greater than critical quantity basis. The item is not saved."
     elsif @item.stock > @item.critical_quantity_basis
       @item.status_id = 1
     elsif @item.stock > 0 || @item.stock < @item.critical_quantity_basis
@@ -65,6 +65,21 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1
   # PATCH/PUT /items/1.json
   def update
+    @stock_input = params[:item][:stock]
+    @critical_quantity_basis = params[:item][:critical_quantity_basis]
+    puts "#{@stock_input}"
+    puts "#{@item.critical_quantity_basis}"
+    if @stock_input.to_i == 0
+    puts "out of stock reached"
+      @item.status_id = 3
+    elsif @stock_input.to_i > 0 and @stock_input.to_i < @critical_quantity_basis.to_i
+      puts "need replenishment reached"
+      @item.status_id = 2
+    else @stock_input.to_i > @critical_quantity_basis.to_i
+      puts "active reached"
+      @item.status_id = 1
+    end
+
     respond_to do |format|
       if @item.update(item_params)
         format.html { redirect_to items_path, notice: 'Item was successfully updated.' }

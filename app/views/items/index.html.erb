@@ -39,11 +39,11 @@
             <td>₱ <%= item.retail_price %></td>
             <td>₱ <%= item.cost_price %></td>
             <td><%= item.stock %></td>
-          <% if item.status.name == "Active" %>
+          <% if item.status.id == 1 %>
             <td><a class="btn btn-success btn-xs cursor-default"><%= item.status.name %></a></td>
-          <% elsif item.status.name == "Needs Replenishment" %>
+          <% elsif item.status.id == 2 %>
             <td><a class="btn btn-warning btn-xs cursor-default"><%= item.status.name %></a></td>
-          <% elsif item.status.name == "Out of Stock" %>
+          <% elsif item.status.id == 3 %>
             <td><a class="btn btn-danger btn-xs cursor-default"><%= item.status.name %></a></td>
           <% end %>
             <td><%= link_to 'View', item, :class => "btn btn-primary btn-outline"  %></td>
