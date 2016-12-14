@@ -10,7 +10,10 @@ p, td, th, tr {
   margin-top: 11%;
   margin-left: 8%;
 }
-
+.add-sale {
+    width: 74%;
+    margin: 4% 32%;
+}
 .update-form-title{
   margin-left: 40%;
 }

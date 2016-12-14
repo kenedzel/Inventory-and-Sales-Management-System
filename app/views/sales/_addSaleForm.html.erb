@@ -1,0 +1,51 @@
+<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">New Sale</h4>
+        </div>
+        <%= form_for(sale) do |f| %>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="add-sale">
+                  <% if sale.errors.any? %>
+                    <div id="error_explanation">
+                      <h2><%= pluralize(sale.errors.count, "error") %> prohibited this data from being saved:</h2>
+                      <ul>
+                      <% sale.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                      <% end %>
+                      </ul>
+                    </div>
+                  <% end %>
+                  <div class="col-md-6">
+                    <div class="field">
+                      <%= f.label :item_id %>
+                      <%=f.select(:item_id, options_from_collection_for_select(@items,:id,:name,:stock), {} ,{class: "form-control"}) %>
+                    </div>
+
+                    <div class="field">
+                      <%= f.label :quantity %>
+                      <%= f.number_field :quantity, :class => "form-control"  %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="modal-footer">
+              <div class="actions">
+                <button type="button" class="btn btn-danger btn-outline" data-dismiss="modal">Close</button>
+                <%= f.submit "Add Sale", :class => "btn btn-success btn-outline to-left" %>
+              </div>
+            </div>
+          </div>
+      </div>
+        <% end %>
+    </div>
+  </div>

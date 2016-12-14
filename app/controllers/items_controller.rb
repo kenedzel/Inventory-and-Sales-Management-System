@@ -69,13 +69,14 @@ class ItemsController < ApplicationController
     @critical_quantity_basis = params[:item][:critical_quantity_basis]
     puts "#{@stock_input}"
     puts "#{@item.critical_quantity_basis}"
+
     if @stock_input.to_i == 0
     puts "out of stock reached"
       @item.status_id = 3
     elsif @stock_input.to_i > 0 and @stock_input.to_i < @critical_quantity_basis.to_i
       puts "need replenishment reached"
       @item.status_id = 2
-    else @stock_input.to_i > @critical_quantity_basis.to_i
+    elsif @stock_input.to_i > @critical_quantity_basis.to_i
       puts "active reached"
       @item.status_id = 1
     end
@@ -109,6 +110,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :code, :category_id, :retail_price, :cost_price, :stock, :status_id, :critical_quantity_basis)
+      params.require(:item).permit(:name, :code, :category_id, :cost_price, :stock, :status_id, :critical_quantity_basis)
     end
 end

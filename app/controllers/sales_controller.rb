@@ -1,10 +1,12 @@
 class SalesController < ApplicationController
   before_action :set_sale, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /sales
   # GET /sales.json
   def index
     @sales = Sale.all
+    @sale = Sale.new
+    @items = Item.get_all_items
   end
 
   # GET /sales/1
@@ -25,10 +27,30 @@ class SalesController < ApplicationController
   # POST /sales.json
   def create
     @sale = Sale.new(sale_params)
+    @get_item_quantity = params[:sale][:item_id]
+    @item = Item.find(@get_item_quantity)
+    @sale.total_sale = @sale.quantity * @item.cost_price
+
+    # compute stock after sale
+    @stock_after_sale = @item.stock - @sale.quantity
+
+    @sale.quantity_before_sale = @item.stock
+
+    @sale.quantity_after_sale = @stock_after_sale
+    #update item's stock
+    @item.update_attribute(:stock, @stock_after_sale)
+
+    if @stock_after_sale == 0
+      @item.update_attribute(:status_id, 3)
+    elsif @stock_after_sale > 0 and @stock_after_sale < @item.critical_quantity_basis
+      @item.update_attribute(:status_id, 2)
+    elsif @stock_after_sale > @item.critical_quantity_basis
+      @item.update_attribute(:status_id, 1)
+    end
 
     respond_to do |format|
       if @sale.save
-        format.html { redirect_to @sale, notice: 'Sale was successfully created.' }
+        format.html { redirect_to sales_path, notice: 'Sale was successfully created.' }
         format.json { render :show, status: :created, location: @sale }
       else
         format.html { render :new }
