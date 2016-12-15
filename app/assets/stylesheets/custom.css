@@ -236,3 +236,33 @@ th, td {
     color: #fff;
     background-color: #3b0377;
 }
+
+.text-field-under-chosen {
+    width: 200px;
+}
+
+.chosen-container-single .chosen-single {
+    height: 30px !important;
+    border-radius: 3px !important;
+    border: 1px solid #CCCCCC !important;
+}
+.chosen-container-single .chosen-single span {
+    padding-top: 2px !important;
+}
+.chosen-container-single .chosen-single div b {
+    margin-top: 2px !important;
+}
+
+.chosen-container-active .chosen-single,
+.chosen-container-active.chosen-with-drop .chosen-single {
+    border-color: #ccc !important;
+    border-color: rgba(82, 168, 236, .8) !important;
+    outline: 0 !important;
+    outline: thin dotted \9 !important;
+    -moz-box-shadow: 0 0 8px rgba(82, 168, 236, .6) !important;
+    box-shadow: 0 0 8px rgba(82, 168, 236, .6) !important;
+}
+
+.text-field-for-add-item {
+  width: 198px;
+}

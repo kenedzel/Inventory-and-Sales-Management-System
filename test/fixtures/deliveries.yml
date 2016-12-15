@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item_id: 1
+  quantity: 1
+  quantity_before_delivery: 1
+  quantity_after_delivery: 1
+
+two:
+  item_id: 1
+  quantity: 1
+  quantity_before_delivery: 1
+  quantity_after_delivery: 1
