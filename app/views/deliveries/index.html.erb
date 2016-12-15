@@ -20,9 +20,10 @@
     <thead>
       <tr>
         <th>Item</th>
-        <th>Quantity</th>
         <th>Quantity before delivery</th>
+        <th>Quantity Delivered</th>
         <th>Quantity after delivery</th>
+        <th>Timestamp</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -30,12 +31,11 @@
     <tbody>
       <% @deliveries.each do |delivery| %>
         <tr>
-          <td><%= delivery.item_id %></td>
-          <td><%= delivery.quantity %></td>
-          <td><%= delivery.quantity_before_delivery %></td>
-          <td><%= delivery.quantity_after_delivery %></td>
-          <td><%= link_to 'Show', delivery %></td>
-          <td><%= link_to 'Edit', edit_delivery_path(delivery) %></td>
+          <td><%= delivery.item.name %></td>
+          <td><%= delivery.quantity_before_delivery %> units</td>
+          <td><strong><%= delivery.quantity %> units</strong></td>
+          <td><%= delivery.quantity_after_delivery %> units</td>
+          <td><%= localize(delivery.created_at, :format => :long) %></td>
           <td><%= link_to 'Destroy', delivery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>

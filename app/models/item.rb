@@ -2,6 +2,7 @@ class Item < ApplicationRecord
   belongs_to :category
   belongs_to :status
   has_many :sale
+  has_many :delivery
   validates :stock, :numericality => { :greater_than_or_equal_to => 0}
 
   scope :get_all_items, -> {

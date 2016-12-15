@@ -27,10 +27,28 @@ class DeliveriesController < ApplicationController
   # POST /deliveries.json
   def create
     @delivery = Delivery.new(delivery_params)
+    @get_item_quantity = params[:delivery][:item_id]
+    @item = Item.find(@get_item_quantity)
+
+    @stock_after_delivery = @item.stock + @delivery.quantity
+
+    @delivery.quantity_before_delivery = @item.stock
+
+    @delivery.quantity_after_delivery = @stock_after_delivery
+
+    @item.update_attribute(:stock, @stock_after_delivery)
+
+    if @stock_after_delivery == 0
+      @item.update_attribute(:status_id, 3)
+    elsif @stock_after_delivery > 0 and @stock_after_delivery < @item.critical_quantity_basis
+      @item.update_attribute(:status_id, 2)
+    elsif @stock_after_delivery > @item.critical_quantity_basis
+      @item.update_attribute(:status_id, 1)
+    end
 
     respond_to do |format|
       if @delivery.save
-        format.html { redirect_to @delivery, notice: 'Delivery was successfully created.' }
+        format.html { redirect_to delivery_path, notice: 'Delivery was successfully created.' }
         format.json { render :show, status: :created, location: @delivery }
       else
         format.html { render :new }
