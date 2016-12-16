@@ -26,7 +26,7 @@
                   <div class="col-md-6">
                     <div class="field">
                       <%= f.label :item_id %>
-                      <%= f.select(:item_id, options_from_collection_for_select(@items,:id,:name,:stock), {} ,{class: 'chosen-select'}) %>
+                      <%= f.select(:item_id, options_from_collection_for_select(@items,:id,:name,:stock), {} ,{class: "selectpicker", "data-live-search" => "true" }) %>
                     </div>
 
                     <div class="field">
@@ -49,3 +49,11 @@
         <% end %>
     </div>
   </div>
+  <script>
+    $(document).ready(function() {
+        $('.selectpicker').selectpicker({
+            size: false
+            check-mark: none
+        });
+    });
+  </script>

@@ -30,11 +30,6 @@
                     </div>
 
                     <div class="field">
-                      <%= f.label :code %>
-                      <%= f.text_field :code, :class => "form-control text-field-for-add-item", :disabled => "true", :value => "To be generated" %>
-                    </div>
-
-                    <div class="field">
                       <%= f.label :category_id %>
                       <%=f.select(:category_id, options_from_collection_for_select(@categories,:id,:name), {} ,{class: 'form-control text-field-for-add-item'}) %>
                     </div>

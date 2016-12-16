@@ -36,7 +36,8 @@
           <td><%= sale.quantity_after_sale %> units</td>
           <td>₱ <%= sale.total_sale %></td>
           <td><%= localize(sale.created_at, :format => :long) %></td>
-          <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Delete', sale, :class => "btn btn-danger btn-outline", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <!-- <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
         </tr>
       <% end %>
     </tbody>

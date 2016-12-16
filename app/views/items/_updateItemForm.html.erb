@@ -17,11 +17,6 @@
     </div>
 
     <div class="field">
-      <%= f.label :code %>
-      <%= f.text_field :code, :class => "form-control" %>
-    </div>
-
-    <div class="field">
       <%= f.label :category_id %>
       <!-- <%=f.select(:category_id, options_from_collection_for_select(@categories,:id,:name), {} ,{class: "form-control"}) %> -->
       <%= f.select(:category_id, options_from_collection_for_select(@categories,:id,:name, f.object.category_id), {include_blank: '-- Select Category --'}, {:id=>"category_id", :class =>"form-control", :disabled=>false}) %>
@@ -34,7 +29,7 @@
 
     <div class="field">
       <%= f.label :stock %>
-      <%= f.number_field :stock, :class => "form-control" %>
+      <%= f.number_field :stock, :class => "form-control", :disabled => "true" %>
     </div>
 
     <div class="field">

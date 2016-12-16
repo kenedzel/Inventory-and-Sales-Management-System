@@ -11,7 +11,7 @@ class Item < ApplicationRecord
   }
 
   scope :get_item, ->(id) {
-    select("id, name, code, category_id, cost_price, stock, status_id")
+    select("id, name, category_id, cost_price, stock, status_id")
     .from("items where id =" + id )
   }
 end

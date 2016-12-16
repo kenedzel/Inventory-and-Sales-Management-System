@@ -20,9 +20,9 @@
     <thead>
       <tr>
         <th>Item</th>
-        <th>Quantity before delivery</th>
+        <th>Stock before delivery</th>
         <th>Quantity Delivered</th>
-        <th>Quantity after delivery</th>
+        <th>Stock after delivery</th>
         <th>Timestamp</th>
         <th colspan="3"></th>
       </tr>
@@ -36,7 +36,8 @@
           <td><strong><%= delivery.quantity %> units</strong></td>
           <td><%= delivery.quantity_after_delivery %> units</td>
           <td><%= localize(delivery.created_at, :format => :long) %></td>
-          <td><%= link_to 'Destroy', delivery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Delete', delivery, :class => "btn btn-danger btn-outline", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <!-- <td><%= link_to 'Destroy', delivery, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
         </tr>
       <% end %>
     </tbody>

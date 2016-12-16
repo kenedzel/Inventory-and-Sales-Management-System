@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    @items = Item.paginate(:page => params[:page], :per_page => 4)
     @item = Item.new
     @categories = Category.get_all_categories
     @statuses = Status.get_all_statuses
@@ -34,12 +34,6 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @categories = Category.get_all_categories
     @statuses = Status.get_all_statuses
-
-    name = @item.name.to_i(2)
-
-    #improve item code generation
-
-    @item.code = "I_00" + name.to_s(2)
 
     if @item.stock < @item.critical_quantity_basis && @item.stock <= 0
       flash[:notice] = "Stocks must be greater than critical quantity basis. The item is not saved."

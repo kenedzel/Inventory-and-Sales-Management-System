@@ -17,6 +17,7 @@ gem 'coffee-rails', '~> 4.2'
 # gem 'therubyracer', platforms: :ruby
 gem 'devise'
 gem 'font-awesome-rails'
+gem 'bootstrap-select-rails'
 gem 'twitter-bootstrap-rails'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap'
