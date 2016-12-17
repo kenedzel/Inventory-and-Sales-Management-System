@@ -12,6 +12,8 @@
  *
  *= require_tree .
  *= require_self
+ *= dataTables/jquery.dataTables
+ *= require dataTables.bootstrap4
  *= require chosen
  */
  @font-face {

@@ -1,12 +1,17 @@
 p, td, th, tr {
     font-family: "Roboto", Georgia, Serif;
 }
-
+.select-width {
+  width: 200px;
+}
 .side-margin{
   margin-left: 7%;
   margin-top: 2%;
 }
-.data-table {
+.export-font-weight {
+  font-weight: bolder;
+}
+.data-for-table {
   margin-top: 11%;
   margin-left: 8%;
 }
@@ -69,7 +74,7 @@ th, td {
 }
 
 .single-padding-btn {
-  padding-left: 51%;
+  padding-left: 24%;
 }
 
 .margin-left-unit {
@@ -111,7 +116,7 @@ th, td {
 }
 
 .padding-btn {
-  padding-left: 86%;
+  padding-left: 24%;
 }
 .to-left {
   float: left;

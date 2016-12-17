@@ -1,0 +1,23 @@
+<table border="1">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Price</th>
+      <th>Stock</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.name %></td>
+        <td><%= item.category.name %></td>
+        <td>₱ <%= item.cost_price %></td>
+        <td><%= item.stock %></td>
+        <td><%= item.status.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

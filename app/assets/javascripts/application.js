@@ -16,5 +16,8 @@
 //= require chosen-jquery
 //= require bootstrap-select
 //= require scaffold
+//= require jquery.dataTables
+//= require dataTables/jquery.dataTables
+//= require dataTables.bootstrap4
 //= require turbolinks
 //= require_tree .

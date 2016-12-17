@@ -5,11 +5,19 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.paginate(:page => params[:page], :per_page => 4)
+    #Item.paginate(:page => params[:page], :per_page => 4)
+    @items = Item.all
     @item = Item.new
     @categories = Category.get_all_categories
     @statuses = Status.get_all_statuses
     # @item_search = Item.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @items.to_csv }
+      format.xls
+    end
+
   end
 
   # GET /items/1

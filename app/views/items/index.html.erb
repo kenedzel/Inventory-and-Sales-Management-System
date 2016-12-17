@@ -1,3 +1,8 @@
+<script>
+  $(document).ready(function() {
+    $('#data-tbl').DataTable();
+  });
+</script>
 <%= render "addItemForm", item: @item %>
   <div align="center">
     <% if notice.present? %>
@@ -11,12 +16,16 @@
     <h1>Items</h1>
     <p>Items that are listed in the table are saved in the inventory.</p>
   </div>
-  <div class="data-table">
+  <div class="padding-btn">
+    <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">Add item</button>
+    <%= link_to items_path(format: "xls"), :class => "btn btn-default btn-sm export-font-weight" do %>
+      <span class="fa fa-file"> Export to Excel</span>
+    <% end %>
+  </div>
+  <div class="data-for-table">
   <!-- <%= link_to 'New Item', new_item_path, :class => "items-padding btn btn-sm btn-default" %> -->
-    <div class="padding-btn">
-      <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">Add item</button>
-    </div>
-    <table class="table table-positioning">
+
+    <table id="data-tbl" class="table table-striped table-bordered table-positioning">
       <thead>
         <tr>
           <th>Name</th>
@@ -24,7 +33,7 @@
           <th>Price</th>
           <th>Stock</th>
           <th>Status</th>
-          <th colspan="3"></th>
+          <th></th>
         </tr>
       </thead>
 
@@ -42,16 +51,14 @@
           <% elsif item.status.id == 3 %>
             <td><a class="btn btn-danger btn-xs cursor-default"><%= item.status.name %></a></td>
           <% end %>
-            <td><%= link_to 'View', item, :class => "btn btn-primary btn-outline"  %></td>
-            <td><%= link_to 'Edit', edit_item_path(item), :class => "btn btn-warning btn-outline" %></td>
-            <td><%= link_to 'Delete', item, :class => "btn btn-danger btn-outline", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'View', item, :class => "btn btn-primary btn-outline"  %> <%= link_to 'Edit', edit_item_path(item), :class => "btn btn-warning btn-outline" %> <%= link_to 'Delete', item, :class => "btn btn-danger btn-outline", method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
 
         <% end %>
       </tbody>
     </table>
-    <div class="paginate-table">
-      <%= will_paginate @items %>
-    </div>
+    <!-- <div class="paginate-table">
+
+    </div> -->
 </div>
 <br>
