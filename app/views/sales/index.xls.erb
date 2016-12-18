@@ -1,0 +1,25 @@
+<table border="1">
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Stock Before Transaction</th>
+      <th>Quantity Sold</th>
+      <th>Stock After Transaction</th>
+      <th>Total sale</th>
+      <th>Timestamp</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sales.each do |sale| %>
+      <tr>
+        <td><%= sale.item.name %></td>
+        <td><%= sale.quantity_before_sale %> units</td>
+        <td><strong><%= sale.quantity %> units</strong></td>
+        <td><%= sale.quantity_after_sale %> units</td>
+        <td>Php <%= sale.total_sale %></td>
+        <td><%= localize(sale.created_at, :format => :long) %></td>
+
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,23 @@
+<table border="1">
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Stock before delivery</th>
+      <th>Quantity Delivered</th>
+      <th>Stock after delivery</th>
+      <th>Timestamp</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @deliveries.each do |delivery| %>
+      <tr>
+        <td><%= delivery.item.name %></td>
+        <td><%= delivery.quantity_before_delivery %> units</td>
+        <td><strong><%= delivery.quantity %> units</strong></td>
+        <td><%= delivery.quantity_after_delivery %> units</td>
+        <td><%= localize(delivery.created_at, :format => :long) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

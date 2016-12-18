@@ -7,6 +7,12 @@ class SalesController < ApplicationController
     @sales = Sale.all
     @sale = Sale.new
     @items = Item.get_all_items
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @sales.to_csv }
+      format.xls
+    end
   end
 
   # GET /sales/1

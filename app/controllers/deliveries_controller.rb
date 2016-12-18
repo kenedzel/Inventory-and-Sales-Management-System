@@ -7,6 +7,12 @@ class DeliveriesController < ApplicationController
     @deliveries = Delivery.all
     @delivery = Delivery.new
     @items = Item.get_all_items
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @deliveries.to_csv }
+      format.xls
+    end
   end
 
   # GET /deliveries/1

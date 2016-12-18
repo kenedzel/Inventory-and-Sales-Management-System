@@ -1,3 +1,8 @@
+<script>
+  $(document).ready(function() {
+    $('#data-tbl2').DataTable();
+  });
+</script>
 <%= render "addSaleForm", sale: @sale %>
 <div align="center">
   <% if notice.present? %>
@@ -13,8 +18,11 @@
 <div class= "data-table">
   <div class="padding-btn">
     <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">Add Sales</button>
+    <%= link_to sales_path(format: "xls"), :class => "btn btn-default btn-sm export-font-weight" do %>
+      <span class="fa fa-file"> Export to Excel</span>
+    <% end %>
   </div>
-  <table class="table table-positioning">
+  <table id="data-tbl2" class="table table-positioning">
     <thead>
       <tr>
         <th>Item</th>
@@ -23,7 +31,7 @@
         <th>Stock After Transaction</th>
         <th>Total sale</th>
         <th>Timestamp</th>
-        <th colspan="3"></th>
+        <th></th>
       </tr>
     </thead>
 
