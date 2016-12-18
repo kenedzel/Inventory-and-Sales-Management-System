@@ -35,6 +35,14 @@ class SalesController < ApplicationController
     @sale = Sale.new(sale_params)
     @get_item_quantity = params[:sale][:item_id]
     @item = Item.find(@get_item_quantity)
+
+    if @item.stock == 0
+      flash[:notice] = "Transaction cannot proceed. The item is out of stock."
+      redirect_to sales_path and return
+    elsif @item.stock < @sale.quantity
+      flash[:notice] ="Transaction cannot proceed. The item has insufficient stock."
+      redirect_to sales_path and return
+    end
     @sale.total_sale = @sale.quantity * @item.cost_price
 
     # compute stock after sale
