@@ -36,6 +36,11 @@ class DeliveriesController < ApplicationController
     @get_item_quantity = params[:delivery][:item_id]
     @item = Item.find(@get_item_quantity)
 
+    if @delivery.quantity == 0
+      flash[:notice] = "Void quantity. Please try again."
+      redirect_to sales_path and return
+    end
+
     @stock_after_delivery = @item.stock + @delivery.quantity
 
     @delivery.quantity_before_delivery = @item.stock

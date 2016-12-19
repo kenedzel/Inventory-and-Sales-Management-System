@@ -24,3 +24,14 @@ Status.create!(:name => "Out of Stock")
 User.delete_all
 ActiveRecord::Base.connection.execute("ALTER SEQUENCE users_id_seq RESTART WITH 1;")
 User.create!(:email => "developer@admin.com", :password => "developer")
+
+Sale.delete_all
+Delivery.delete_all
+
+Item.delete_all
+ActiveRecord::Base.connection.execute("ALTER SEQUENCE items_id_seq RESTART WITH 1;")
+Item.create!(:name => "Bond Paper (S)", :category_id => "1", :cost_price => "5", :stock => "0", :status_id => "3", :critical_quantity_basis => "10")
+Item.create!(:name => "Bond Paper (L)", :category_id => "1", :cost_price => "5", :stock => "0", :status_id => "3", :critical_quantity_basis => "10")
+Item.create!(:name => "Glossy Paper", :category_id => "1", :cost_price => "10", :stock => "0", :status_id => "3", :critical_quantity_basis => "10")
+Item.create!(:name => "Colored Paper", :category_id => "1", :cost_price => "10", :stock => "0", :status_id => "3", :critical_quantity_basis => "10")
+Item.create!(:name => "Oslo", :category_id => "1", :cost_price => "5", :stock => "0", :status_id => "3", :critical_quantity_basis => "10")

@@ -40,9 +40,13 @@ class SalesController < ApplicationController
       flash[:notice] = "Transaction cannot proceed. The item is out of stock."
       redirect_to sales_path and return
     elsif @item.stock < @sale.quantity
-      flash[:notice] ="Transaction cannot proceed. The item has insufficient stock."
+      flash[:notice] = "Transaction cannot proceed. The item has insufficient stock."
+      redirect_to sales_path and return
+    elsif @sale.quantity == 0
+      flash[:notice] = "Void quantity. Please try again."
       redirect_to sales_path and return
     end
+    
     @sale.total_sale = @sale.quantity * @item.cost_price
 
     # compute stock after sale
