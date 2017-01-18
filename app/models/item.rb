@@ -3,6 +3,7 @@ class Item < ApplicationRecord
   belongs_to :status
   has_many :sale
   has_many :delivery
+
   validates :stock, :numericality => { :greater_than_or_equal_to => 0}
 
   require 'csv'

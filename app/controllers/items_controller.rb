@@ -45,9 +45,9 @@ class ItemsController < ApplicationController
 
     if @item.stock < @item.critical_quantity_basis && @item.stock <= 0
       flash[:notice] = "Stocks must be greater than critical quantity basis. The item is not saved."
-    elsif @item.stock > @item.critical_quantity_basis
+    elsif @item.stock >= @item.critical_quantity_basis
       @item.status_id = 1
-    elsif @item.stock > 0 || @item.stock < @item.critical_quantity_basis
+    elsif @item.stock > 0 || @item.stock <= @item.critical_quantity_basis
       @item.status_id = 2
     elsif @item.stock == 0
       @item.status_id = 3

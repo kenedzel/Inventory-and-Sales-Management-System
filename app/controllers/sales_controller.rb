@@ -46,7 +46,7 @@ class SalesController < ApplicationController
       flash[:notice] = "Void quantity. Please try again."
       redirect_to sales_path and return
     end
-    
+
     @sale.total_sale = @sale.quantity * @item.cost_price
 
     # compute stock after sale
@@ -60,9 +60,9 @@ class SalesController < ApplicationController
 
     if @stock_after_sale == 0
       @item.update_attribute(:status_id, 3)
-    elsif @stock_after_sale > 0 and @stock_after_sale < @item.critical_quantity_basis
+    elsif @stock_after_sale > 0 and @stock_after_sale <= @item.critical_quantity_basis
       @item.update_attribute(:status_id, 2)
-    elsif @stock_after_sale > @item.critical_quantity_basis
+    elsif @stock_after_sale >= @item.critical_quantity_basis
       @item.update_attribute(:status_id, 1)
     end
 

@@ -51,9 +51,9 @@ class DeliveriesController < ApplicationController
 
     if @stock_after_delivery == 0
       @item.update_attribute(:status_id, 3)
-    elsif @stock_after_delivery > 0 and @stock_after_delivery < @item.critical_quantity_basis
+    elsif @stock_after_delivery > 0 and @stock_after_delivery <= @item.critical_quantity_basis
       @item.update_attribute(:status_id, 2)
-    elsif @stock_after_delivery > @item.critical_quantity_basis
+    elsif @stock_after_delivery >= @item.critical_quantity_basis
       @item.update_attribute(:status_id, 1)
     end
 
